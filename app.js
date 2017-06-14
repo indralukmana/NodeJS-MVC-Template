@@ -1,6 +1,5 @@
 // express library import
 const express = require('express')
-const session = require('express-session')
 
 // import path for working with directory and files
 const path = require('path')
