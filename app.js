@@ -6,5 +6,5 @@ const session = require('express-session')
 const app = express()
 
 // view engine setup
-app.set('views', path.join(__dirname), 'views')
+app.set('views', path.join(__dirname), 'views') // the folder for template files
 app.set('view engine', 'pug')
