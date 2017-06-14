@@ -1,4 +1,4 @@
-// express library import
+// import express library
 const express = require('express')
 
 // import path for working with directory and files
