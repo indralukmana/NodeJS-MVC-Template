@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/indralukmana/NodeJS-MVC-Template/issues"
   },
-  "homepage": "https://github.com/indralukmana/NodeJS-MVC-Template#readme"
+  "homepage": "https://github.com/indralukmana/NodeJS-MVC-Template#readme",
+  "devDependencies": {
+    "standard": "^10.0.2"
+  }
 }
