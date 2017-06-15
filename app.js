@@ -22,6 +22,9 @@ const MongoStore = require('connect-mongo')(session)
 // import mongoose for interfacing with mongodb
 const mongoose = require('mongoose')
 
+// import library for hanling logins
+const passport = require('passport')
+
 // create the Express app
 const app = express()
 
@@ -50,3 +53,7 @@ app.use(session({
   saveUninitialized: false,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }))
+
+// Passport.js for handling logins
+app.use(passport.initialize())
+app.use(passport.session())
