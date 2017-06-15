@@ -63,3 +63,12 @@ app.use(passport.session())
 
 // Flash middleware for passing message to user requests
 app.use(flash())
+
+// pass variables to templates and requests
+app.use((req, res, next) => {
+  res.locals.h = helpers
+  res.locals.flashes = req.flash()
+  res.locals.user = req.user || null
+  res.locals.currentPath = req.path
+  next()
+})
