@@ -28,6 +28,9 @@ const passport = require('passport')
 // import for flash informations
 const flash = require('connect-flash')
 
+// import library to promisify callback
+const promisify = require('es6-promisify')
+
 // create the Express app
 const app = express()
 
@@ -70,5 +73,11 @@ app.use((req, res, next) => {
   res.locals.flashes = req.flash()
   res.locals.user = req.user || null
   res.locals.currentPath = req.path
+  next()
+})
+
+// promisify callback
+app.use((req, res, next) => {
+  req.login = promisify(req.login, req)
   next()
 })
