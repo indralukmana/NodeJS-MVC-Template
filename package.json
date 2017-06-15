@@ -24,6 +24,7 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.5.2",
+    "eslint-plugin-html": "^3.0.0",
     "standard": "^10.0.2"
   },
   "dependencies": {
