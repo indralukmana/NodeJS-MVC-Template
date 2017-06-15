@@ -25,6 +25,9 @@ const mongoose = require('mongoose')
 // import library for hanling logins
 const passport = require('passport')
 
+// import for flash informations
+const flash = require('connect-flash')
+
 // create the Express app
 const app = express()
 
@@ -57,3 +60,6 @@ app.use(session({
 // Passport.js for handling logins
 app.use(passport.initialize())
 app.use(passport.session())
+
+// Flash middleware for passing message to user requests
+app.use(flash())
