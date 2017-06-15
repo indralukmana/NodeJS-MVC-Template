@@ -1,6 +1,9 @@
 // import express library
 const express = require('express')
 
+// import for library used to validate user inputs
+const expressValidator = require('express-validator')
+
 // import path for working with directory and files
 const path = require('path')
 
@@ -20,3 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 // turns raw requests into req.body
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+// Validator for validating user inputs
+app.use(expressValidator())
