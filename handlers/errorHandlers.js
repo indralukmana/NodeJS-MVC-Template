@@ -39,3 +39,12 @@ exports.developmentErrors = (err, req, res, next) => {
     'application/json': () => res.json(errorDetails)
   })
 }
+
+// error handler for production environment, without error stacktraces
+exports.productionsError = (err, req, res, next) => {
+  res.status(err.status || 500)
+  res.render('error', {
+    message: err.message,
+    error: {}
+  })
+}
