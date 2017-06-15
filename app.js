@@ -34,6 +34,9 @@ const promisify = require('es6-promisify')
 // import routes to be handled
 const routes = require('./routes/index')
 
+// import the error handlers
+const errorHandlers = require('./handlers/errorHandlers')
+
 // create the Express app
 const app = express()
 
@@ -87,3 +90,14 @@ app.use((req, res, next) => {
 
 // handling routes
 app.use('/', routes)
+
+// error handling when route not found
+app.use(errorHandlers.notFound)
+
+// show error stacktrace if in development environment
+if (app.get('env') === 'development') {
+  app.use(errorHandlers.developmentErrors)
+}
+
+// production error
+app.use(errorHandlers.productionsErrors)
