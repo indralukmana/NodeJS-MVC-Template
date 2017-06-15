@@ -34,6 +34,9 @@ const promisify = require('es6-promisify')
 // import routes to be handled
 const routes = require('./routes/index')
 
+// import the helpers file
+const helpers = require('./helpers')
+
 // import the error handlers
 const errorHandlers = require('./handlers/errorHandlers')
 
