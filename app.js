@@ -101,3 +101,6 @@ if (app.get('env') === 'development') {
 
 // production error
 app.use(errorHandlers.productionsErrors)
+
+// export so the app can start
+module.exports = app
