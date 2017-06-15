@@ -41,7 +41,7 @@ const errorHandlers = require('./handlers/errorHandlers')
 const app = express()
 
 // view engine setup
-app.set('views', path.join(__dirname), 'views') // the folder for template files
+app.set('views', path.join(__dirname, 'views')) // the folder for template files
 app.set('view engine', 'pug')
 
 // serve static file in public folder
