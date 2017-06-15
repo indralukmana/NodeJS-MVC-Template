@@ -19,3 +19,23 @@ exports.flashValidationErrors = (err, req, res, next) => {
   errorKeys.forEach(key => req.flash('error', err.errors[key].message))
   res.redirect('back')
 }
+
+// error handler for  development environment
+exports.developmentErrors = (err, req, res, next) => {
+  err.stack = err.stack || ''
+
+  const errorDetails = {
+    message: err.message,
+    status: err.status,
+    stackHighlighted: err.stack.replace(/[a-z_-\d]+.js:\d+:\d+/gi, '<mark>$&</mark>')
+  }
+
+  res.status(err.status || 500)
+
+  res.format({
+    'text/html': () => {
+      res.render('error', errorDetails)
+    },
+    'application/json': () => res.json(errorDetails)
+  })
+}
