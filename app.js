@@ -10,6 +10,18 @@ const path = require('path')
 // import body parser for processing requests
 const bodyParser = require('body-parser')
 
+// import for cookie parsing library
+const cookieParser = require('cookie-parser')
+
+// import for session
+const session = require('express-session')
+
+// import for mongo storing session
+const MongoStore = require('connect-mongo')(session)
+
+// import mongoose for interfacing with mongodb
+const mongoose = require('mongoose')
+
 // create the Express app
 const app = express()
 
@@ -26,3 +38,15 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // Validator for validating user inputs
 app.use(expressValidator())
+
+// populate req.cookies from request
+app.use(cookieParser())
+
+// add session mechanism that allow the app to keep the data from visiitors and send flash messages
+app.use(session({
+  secret: process.env.SECRET,
+  key: process.env.KEY,
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}))
