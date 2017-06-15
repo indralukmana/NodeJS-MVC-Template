@@ -31,6 +31,9 @@ const flash = require('connect-flash')
 // import library to promisify callback
 const promisify = require('es6-promisify')
 
+// import routes to be handled
+const routes = require('./routes/index')
+
 // create the Express app
 const app = express()
 
@@ -81,3 +84,6 @@ app.use((req, res, next) => {
   req.login = promisify(req.login, req)
   next()
 })
+
+// handling routes
+app.use('/', routes)
